@@ -7,14 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8AFD1DFF2B04A61600BA4E1E /* White_YYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFD1DFA2B04A61600BA4E1E /* White_YYClassInfo.m */; };
+		8AFD1E002B04A61600BA4E1E /* NSObject+White_YYModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AFD1DFB2B04A61600BA4E1E /* NSObject+White_YYModel.h */; };
+		8AFD1E012B04A61600BA4E1E /* White_YYModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AFD1DFC2B04A61600BA4E1E /* White_YYModel.h */; };
+		8AFD1E022B04A61600BA4E1E /* NSObject+White_YYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFD1DFD2B04A61600BA4E1E /* NSObject+White_YYModel.m */; };
+		8AFD1E032B04A61600BA4E1E /* White_YYClassInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AFD1DFE2B04A61600BA4E1E /* White_YYClassInfo.h */; };
 		D927FA881F36EB6C007B972E /* YYModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D927FA7E1F36EB6C007B972E /* YYModel.framework */; };
-		D930C3B51F36EDC4005A2D00 /* NSObject+YYModel.h in Headers */ = {isa = PBXBuildFile; fileRef = D930C3B01F36EDC4005A2D00 /* NSObject+YYModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D930C3B61F36EDC4005A2D00 /* NSObject+YYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D930C3B11F36EDC4005A2D00 /* NSObject+YYModel.m */; };
-		D930C3B71F36EDC4005A2D00 /* NSObject+YYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D930C3B11F36EDC4005A2D00 /* NSObject+YYModel.m */; };
-		D930C3B81F36EDC4005A2D00 /* YYClassInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = D930C3B21F36EDC4005A2D00 /* YYClassInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D930C3B91F36EDC4005A2D00 /* YYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D930C3B31F36EDC4005A2D00 /* YYClassInfo.m */; };
-		D930C3BA1F36EDC4005A2D00 /* YYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D930C3B31F36EDC4005A2D00 /* YYClassInfo.m */; };
-		D930C3BB1F36EDC4005A2D00 /* YYModel.h in Headers */ = {isa = PBXBuildFile; fileRef = D930C3B41F36EDC4005A2D00 /* YYModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D97395061F36EE2D00FC2DEB /* YYTestAutoTypeConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = D97394F91F36EE2D00FC2DEB /* YYTestAutoTypeConvert.m */; };
 		D97395071F36EE2D00FC2DEB /* YYTestBlacklistWhitelist.m in Sources */ = {isa = PBXBuildFile; fileRef = D97394FA1F36EE2D00FC2DEB /* YYTestBlacklistWhitelist.m */; };
 		D97395081F36EE2D00FC2DEB /* YYTestClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D97394FB1F36EE2D00FC2DEB /* YYTestClassInfo.m */; };
@@ -39,14 +37,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8AFD1DFA2B04A61600BA4E1E /* White_YYClassInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = White_YYClassInfo.m; sourceTree = "<group>"; };
+		8AFD1DFB2B04A61600BA4E1E /* NSObject+White_YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+White_YYModel.h"; sourceTree = "<group>"; };
+		8AFD1DFC2B04A61600BA4E1E /* White_YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = White_YYModel.h; sourceTree = "<group>"; };
+		8AFD1DFD2B04A61600BA4E1E /* NSObject+White_YYModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+White_YYModel.m"; sourceTree = "<group>"; };
+		8AFD1DFE2B04A61600BA4E1E /* White_YYClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = White_YYClassInfo.h; sourceTree = "<group>"; };
 		D927FA7E1F36EB6C007B972E /* YYModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YYModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D927FA821F36EB6C007B972E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Framework/Info.plist; sourceTree = "<group>"; };
 		D927FA871F36EB6C007B972E /* YYModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YYModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D930C3B01F36EDC4005A2D00 /* NSObject+YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YYModel.h"; sourceTree = "<group>"; };
-		D930C3B11F36EDC4005A2D00 /* NSObject+YYModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+YYModel.m"; sourceTree = "<group>"; };
-		D930C3B21F36EDC4005A2D00 /* YYClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYClassInfo.h; sourceTree = "<group>"; };
-		D930C3B31F36EDC4005A2D00 /* YYClassInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYClassInfo.m; sourceTree = "<group>"; };
-		D930C3B41F36EDC4005A2D00 /* YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYModel.h; sourceTree = "<group>"; };
 		D97394F81F36EE2D00FC2DEB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../YYModelTests/Info.plist; sourceTree = "<group>"; };
 		D97394F91F36EE2D00FC2DEB /* YYTestAutoTypeConvert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYTestAutoTypeConvert.m; sourceTree = "<group>"; };
 		D97394FA1F36EE2D00FC2DEB /* YYTestBlacklistWhitelist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYTestBlacklistWhitelist.m; sourceTree = "<group>"; };
@@ -81,10 +78,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8AFD1DF92B04A61600BA4E1E /* White_YYModel */ = {
+			isa = PBXGroup;
+			children = (
+				8AFD1DFA2B04A61600BA4E1E /* White_YYClassInfo.m */,
+				8AFD1DFB2B04A61600BA4E1E /* NSObject+White_YYModel.h */,
+				8AFD1DFC2B04A61600BA4E1E /* White_YYModel.h */,
+				8AFD1DFD2B04A61600BA4E1E /* NSObject+White_YYModel.m */,
+				8AFD1DFE2B04A61600BA4E1E /* White_YYClassInfo.h */,
+			);
+			name = White_YYModel;
+			path = ../White_YYModel;
+			sourceTree = "<group>";
+		};
 		D927FA741F36EB6C007B972E = {
 			isa = PBXGroup;
 			children = (
-				D930C3AF1F36EDC4005A2D00 /* YYModel */,
+				8AFD1DF92B04A61600BA4E1E /* White_YYModel */,
 				D97394F71F36EE2D00FC2DEB /* YYModelTests */,
 				D927FA7F1F36EB6C007B972E /* Products */,
 			);
@@ -97,20 +107,6 @@
 				D927FA871F36EB6C007B972E /* YYModelTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		D930C3AF1F36EDC4005A2D00 /* YYModel */ = {
-			isa = PBXGroup;
-			children = (
-				D930C3B41F36EDC4005A2D00 /* YYModel.h */,
-				D930C3B01F36EDC4005A2D00 /* NSObject+YYModel.h */,
-				D930C3B11F36EDC4005A2D00 /* NSObject+YYModel.m */,
-				D930C3B21F36EDC4005A2D00 /* YYClassInfo.h */,
-				D930C3B31F36EDC4005A2D00 /* YYClassInfo.m */,
-				D927FA821F36EB6C007B972E /* Info.plist */,
-			);
-			name = YYModel;
-			path = ../YYModel;
 			sourceTree = "<group>";
 		};
 		D97394F71F36EE2D00FC2DEB /* YYModelTests */ = {
@@ -141,9 +137,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D930C3B51F36EDC4005A2D00 /* NSObject+YYModel.h in Headers */,
-				D930C3B81F36EDC4005A2D00 /* YYClassInfo.h in Headers */,
-				D930C3BB1F36EDC4005A2D00 /* YYModel.h in Headers */,
+				8AFD1E002B04A61600BA4E1E /* NSObject+White_YYModel.h in Headers */,
+				8AFD1E032B04A61600BA4E1E /* White_YYClassInfo.h in Headers */,
+				8AFD1E012B04A61600BA4E1E /* White_YYModel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,8 +239,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D930C3B91F36EDC4005A2D00 /* YYClassInfo.m in Sources */,
-				D930C3B61F36EDC4005A2D00 /* NSObject+YYModel.m in Sources */,
+				8AFD1DFF2B04A61600BA4E1E /* White_YYClassInfo.m in Sources */,
+				8AFD1E022B04A61600BA4E1E /* NSObject+White_YYModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,14 +248,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D930C3BA1F36EDC4005A2D00 /* YYClassInfo.m in Sources */,
 				D973950C1F36EE2D00FC2DEB /* YYTestDescription.m in Sources */,
 				D973950F1F36EE2D00FC2DEB /* YYTestModelToJSON.m in Sources */,
 				D97395091F36EE2D00FC2DEB /* YYTestCopyingAndCoding.m in Sources */,
 				D97395071F36EE2D00FC2DEB /* YYTestBlacklistWhitelist.m in Sources */,
 				D973950B1F36EE2D00FC2DEB /* YYTestCustomTransform.m in Sources */,
 				D97395061F36EE2D00FC2DEB /* YYTestAutoTypeConvert.m in Sources */,
-				D930C3B71F36EDC4005A2D00 /* NSObject+YYModel.m in Sources */,
 				D973950E1F36EE2D00FC2DEB /* YYTestModelMapper.m in Sources */,
 				D97395101F36EE2D00FC2DEB /* YYTestNestModel.m in Sources */,
 				D973950D1F36EE2D00FC2DEB /* YYTestHelper.m in Sources */,
@@ -327,7 +321,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -378,7 +372,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -399,6 +393,7 @@
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibireme.YYModel;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -419,6 +414,7 @@
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibireme.YYModel;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -432,6 +428,7 @@
 			buildSettings = {
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/../YYModelTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibireme.YYModelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -444,6 +441,7 @@
 			buildSettings = {
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/../YYModelTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibireme.YYModelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
