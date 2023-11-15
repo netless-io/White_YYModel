@@ -244,7 +244,7 @@ static force_inline NSDate *White_YYNSDateFromString(__unsafe_unretained NSStrin
 
 
 /// Get the 'NSBlock' class.
-static force_inline Class White_YYNSBlockClass() {
+static force_inline Class White_YYNSBlockClass(void) {
     static Class cls;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -269,7 +269,7 @@ static force_inline Class White_YYNSBlockClass() {
  
  length: 20/24/25
  */
-static force_inline NSDateFormatter *White_YYISODateFormatter() {
+static force_inline NSDateFormatter *White_YYISODateFormatter(void) {
     static NSDateFormatter *formatter = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -1063,9 +1063,9 @@ static void White_ModelSetValueForProperty(__unsafe_unretained id model,
                 
             case White_YYEncodingTypeBlock: {
                 if (isNull) {
-                    ((void (*)(id, SEL, void (^)()))(void *) objc_msgSend)((id)model, meta->_setter, (void (^)())NULL);
+                    ((void (*)(id, SEL, void (^)(void)))(void *) objc_msgSend)((id)model, meta->_setter, (void (^)(void))NULL);
                 } else if ([value isKindOfClass:White_YYNSBlockClass()]) {
-                    ((void (*)(id, SEL, void (^)()))(void *) objc_msgSend)((id)model, meta->_setter, (void (^)())value);
+                    ((void (*)(id, SEL, void (^)(void)))(void *) objc_msgSend)((id)model, meta->_setter, (void (^)(void))value);
                 }
             } break;
                 
