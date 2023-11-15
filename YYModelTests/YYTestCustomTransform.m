@@ -10,7 +10,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "YYModel.h"
+#import "White_YYModel.h"
 
 @interface YYTestCustomTransformModel : NSObject
 @property uint64_t id;
@@ -68,27 +68,27 @@
     NSDictionary *jsonObject;
     
     json = @"{\"id\":5472746497,\"content\":\"Hello\",\"time\":1401234567000}";
-    model = [YYTestCustomTransformModel yy_modelWithJSON:json];
+    model = [YYTestCustomTransformModel _white_yy_modelWithJSON:json];
     XCTAssert(model.time != nil);
     
     json = @"{\"id\":5472746497,\"content\":\"Hello\"}";
-    model = [YYTestCustomTransformModel yy_modelWithJSON:json];
+    model = [YYTestCustomTransformModel _white_yy_modelWithJSON:json];
     XCTAssert(model == nil);
     
-    model = [YYTestCustomTransformModel yy_modelWithDictionary:@{@"id":@5472746497,@"content":@"Hello"}];
+    model = [YYTestCustomTransformModel _white_yy_modelWithDictionary:@{@"id":@5472746497,@"content":@"Hello"}];
     XCTAssert(model == nil);
     
     json = @"{\"id\":5472746497,\"content\":\"Hello\",\"time\":1401234567000}";
-    model = [YYTestCustomTransformModel yy_modelWithJSON:json];
-    jsonObject = [model yy_modelToJSONObject];
+    model = [YYTestCustomTransformModel _white_yy_modelWithJSON:json];
+    jsonObject = [model _white_yy_modelToJSONObject];
     XCTAssert([jsonObject[@"time"] isKindOfClass:[NSNumber class]]);
     
     model.time = nil;
-    jsonObject = [model yy_modelToJSONObject];
+    jsonObject = [model _white_yy_modelToJSONObject];
     XCTAssert(jsonObject == nil);
     
     json = @"{\"id\":5472746497,\"content\":\"Hello\",\"date\":1401234567000}";
-    model = [YYTestCustomTransformModel yy_modelWithJSON:json];
+    model = [YYTestCustomTransformModel _white_yy_modelWithJSON:json];
     XCTAssert(model.time != nil);
     
 }

@@ -11,7 +11,7 @@
 
 #import <XCTest/XCTest.h>
 #import <UIKit/UIKit.h>
-#import "YYModel.h"
+#import "White_YYModel.h"
 #import "YYTestHelper.h"
 
 @interface YYTestModelToJSONModel : NSObject
@@ -111,20 +111,20 @@
     model.set = [NSSet setWithArray:model.array];
     model.color = [UIColor colorWithRed:1 green:0 blue:0 alpha:0.5];
     
-    NSDictionary *jsonObject = [model yy_modelToJSONObject];
+    NSDictionary *jsonObject = [model _white_yy_modelToJSONObject];
     XCTAssert([jsonObject isKindOfClass:[NSDictionary class]]);
     XCTAssert([jsonObject[@"int"] isEqual:@(1)]);
     XCTAssert([jsonObject[@"long"] isEqual:@(2)] || [jsonObject[@"long"] isEqual:@(3)]);
     XCTAssert([ ((NSDictionary *)jsonObject[@"ext"])[@"short"] isEqual:@(4)]);
     XCTAssert(jsonObject[@"color"] != nil);
     
-    NSString *jsonString = [model yy_modelToJSONString];
+    NSString *jsonString = [model _white_yy_modelToJSONString];
     XCTAssert([[YYTestHelper jsonObjectFromString:jsonString] isKindOfClass:[NSDictionary class]]);
     
-    NSData *jsonData = [model yy_modelToJSONData];
+    NSData *jsonData = [model _white_yy_modelToJSONData];
     XCTAssert([[YYTestHelper jsonObjectFromData:jsonData] isKindOfClass:[NSDictionary class]]);
     
-    model = [YYTestModelToJSONModel yy_modelWithJSON:jsonData];
+    model = [YYTestModelToJSONModel _white_yy_modelWithJSON:jsonData];
     XCTAssert(model.intValue == 1);
 }
 
@@ -137,13 +137,13 @@
     model.e = @"e";
     model.f = @{};
     
-    NSDictionary *dic = [model yy_modelToJSONObject];
+    NSDictionary *dic = [model _white_yy_modelToJSONObject];
     NSDictionary *ext = dic[@"ext"];
     XCTAssert([ext[@"b"] isEqualToString:@"b"]);
     XCTAssert([ext[@"a"] isEqualToString:@"a"] || [ext[@"a"] isEqualToString:@"c"]);
     
     model.f = @{@"g" : @""};
-    dic = [model yy_modelToJSONObject];
+    dic = [model _white_yy_modelToJSONObject];
     
 }
 
@@ -158,11 +158,11 @@
     YYTestModelToJSONModel *model = [YYTestModelToJSONModel new];
     model.date = date;
     
-    NSDictionary *jsonObject = [model yy_modelToJSONObject];
+    NSDictionary *jsonObject = [model _white_yy_modelToJSONObject];
     XCTAssert([jsonObject[@"date"] isEqual:dateString]);
     
-    NSString *jsonString = [model yy_modelToJSONString];
-    YYTestModelToJSONModel *newModel = [YYTestModelToJSONModel yy_modelWithJSON:jsonString];
+    NSString *jsonString = [model _white_yy_modelToJSONString];
+    YYTestModelToJSONModel *newModel = [YYTestModelToJSONModel _white_yy_modelWithJSON:jsonString];
     XCTAssert([newModel.date isEqualToDate:date]);
 }
 

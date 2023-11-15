@@ -11,7 +11,7 @@
 
 #import <XCTest/XCTest.h>
 #import <CoreFoundation/CoreFoundation.h>
-#import "YYModel.h"
+#import "White_YYModel.h"
 
 typedef union yy_union{ char a; int b;} yy_union;
 
@@ -89,16 +89,16 @@ typedef union yy_union{ char a; int b;} yy_union;
 @implementation YYTestClassInfo
 
 - (void)testClassInfoCache {
-    YYClassInfo *info1 = [YYClassInfo classInfoWithClass:[YYTestPropertyModel class]];
+    White_YYClassInfo *info1 = [White_YYClassInfo classInfoWithClass:[YYTestPropertyModel class]];
     [info1 setNeedUpdate];
-    YYClassInfo *info2 = [YYClassInfo classInfoWithClassName:@"YYTestPropertyModel"];
+    White_YYClassInfo *info2 = [White_YYClassInfo classInfoWithClassName:@"YYTestPropertyModel"];
     XCTAssertNotNil(info1);
     XCTAssertNotNil(info2);
     XCTAssertEqual(info1, info2);
 }
 
 - (void)testClassMeta {
-    YYClassInfo *classInfo = [YYClassInfo classInfoWithClass:[YYTestPropertyModel class]];
+    White_YYClassInfo *classInfo = [White_YYClassInfo classInfoWithClass:[YYTestPropertyModel class]];
     XCTAssertNotNil(classInfo);
     XCTAssertEqual(classInfo.cls, [YYTestPropertyModel class]);
     XCTAssertEqual(classInfo.superCls, [NSObject class]);
@@ -106,7 +106,7 @@ typedef union yy_union{ char a; int b;} yy_union;
     XCTAssertEqual(classInfo.isMeta, NO);
     
     Class meta = object_getClass([YYTestPropertyModel class]);
-    YYClassInfo *metaClassInfo = [YYClassInfo classInfoWithClass:meta];
+    White_YYClassInfo *metaClassInfo = [White_YYClassInfo classInfoWithClass:meta];
     XCTAssertNotNil(metaClassInfo);
     XCTAssertEqual(metaClassInfo.cls, meta);
     XCTAssertEqual(metaClassInfo.superCls, object_getClass([NSObject class]));
@@ -115,73 +115,73 @@ typedef union yy_union{ char a; int b;} yy_union;
 }
 
 - (void)testClassInfo {
-    YYClassInfo *info = [YYClassInfo classInfoWithClass:[YYTestPropertyModel class]];
-    XCTAssertEqual([self getType:info name:@"boolValue"] & YYEncodingTypeMask, YYEncodingTypeBool);
+    White_YYClassInfo *info = [White_YYClassInfo classInfoWithClass:[YYTestPropertyModel class]];
+    XCTAssertEqual([self getType:info name:@"boolValue"] & White_YYEncodingTypeMask, White_YYEncodingTypeBool);
 #ifdef OBJC_BOOL_IS_BOOL
-    XCTAssertEqual([self getType:info name:@"BOOLValue"] & YYEncodingTypeMask, YYEncodingTypeBool);
+    XCTAssertEqual([self getType:info name:@"BOOLValue"] & White_YYEncodingTypeMask, White_YYEncodingTypeBool);
 #else
-    XCTAssertEqual([self getType:info name:@"BOOLValue"] & YYEncodingTypeMask, YYEncodingTypeInt8);
+    XCTAssertEqual([self getType:info name:@"BOOLValue"] & White_YYEncodingTypeMask, White_YYEncodingTypeInt8);
 #endif
-    XCTAssertEqual([self getType:info name:@"charValue"] & YYEncodingTypeMask, YYEncodingTypeInt8);
-    XCTAssertEqual([self getType:info name:@"unsignedCharValue"] & YYEncodingTypeMask, YYEncodingTypeUInt8);
-    XCTAssertEqual([self getType:info name:@"shortValue"] & YYEncodingTypeMask, YYEncodingTypeInt16);
-    XCTAssertEqual([self getType:info name:@"unsignedShortValue"] & YYEncodingTypeMask, YYEncodingTypeUInt16);
-    XCTAssertEqual([self getType:info name:@"intValue"] & YYEncodingTypeMask, YYEncodingTypeInt32);
-    XCTAssertEqual([self getType:info name:@"unsignedIntValue"] & YYEncodingTypeMask, YYEncodingTypeUInt32);
+    XCTAssertEqual([self getType:info name:@"charValue"] & White_YYEncodingTypeMask, White_YYEncodingTypeInt8);
+    XCTAssertEqual([self getType:info name:@"unsignedCharValue"] & White_YYEncodingTypeMask, White_YYEncodingTypeUInt8);
+    XCTAssertEqual([self getType:info name:@"shortValue"] & White_YYEncodingTypeMask, White_YYEncodingTypeInt16);
+    XCTAssertEqual([self getType:info name:@"unsignedShortValue"] & White_YYEncodingTypeMask, White_YYEncodingTypeUInt16);
+    XCTAssertEqual([self getType:info name:@"intValue"] & White_YYEncodingTypeMask, White_YYEncodingTypeInt32);
+    XCTAssertEqual([self getType:info name:@"unsignedIntValue"] & White_YYEncodingTypeMask, White_YYEncodingTypeUInt32);
 #ifdef __LP64__
-    XCTAssertEqual([self getType:info name:@"longValue"] & YYEncodingTypeMask, YYEncodingTypeInt64);
-    XCTAssertEqual([self getType:info name:@"unsignedLongValue"] & YYEncodingTypeMask, YYEncodingTypeUInt64);
-    XCTAssertEqual(YYEncodingGetType("l") & YYEncodingTypeMask, YYEncodingTypeInt32); // long in 32 bit system
-    XCTAssertEqual(YYEncodingGetType("L") & YYEncodingTypeMask, YYEncodingTypeUInt32); // unsingle long in 32 bit system
+    XCTAssertEqual([self getType:info name:@"longValue"] & White_YYEncodingTypeMask, White_YYEncodingTypeInt64);
+    XCTAssertEqual([self getType:info name:@"unsignedLongValue"] & White_YYEncodingTypeMask, White_YYEncodingTypeUInt64);
+    XCTAssertEqual(YYEncodingGetType("l") & White_YYEncodingTypeMask, White_YYEncodingTypeInt32); // long in 32 bit system
+    XCTAssertEqual(YYEncodingGetType("L") & White_YYEncodingTypeMask, White_YYEncodingTypeUInt32); // unsingle long in 32 bit system
 #else
-    XCTAssertEqual([self getType:info name:@"longValue"] & YYEncodingTypeMask, YYEncodingTypeInt32);
-    XCTAssertEqual([self getType:info name:@"unsignedLongValue"] & YYEncodingTypeMask, YYEncodingTypeUInt32);
+    XCTAssertEqual([self getType:info name:@"longValue"] & White_YYEncodingTypeMask, White_YYEncodingTypeInt32);
+    XCTAssertEqual([self getType:info name:@"unsignedLongValue"] & White_YYEncodingTypeMask, White_YYEncodingTypeUInt32);
 #endif
-    XCTAssertEqual([self getType:info name:@"longLongValue"] & YYEncodingTypeMask, YYEncodingTypeInt64);
-    XCTAssertEqual([self getType:info name:@"unsignedLongLongValue"] & YYEncodingTypeMask, YYEncodingTypeUInt64);
-    XCTAssertEqual([self getType:info name:@"floatValue"] & YYEncodingTypeMask, YYEncodingTypeFloat);
-    XCTAssertEqual([self getType:info name:@"doubleValue"] & YYEncodingTypeMask, YYEncodingTypeDouble);
-    XCTAssertEqual([self getType:info name:@"longDoubleValue"] & YYEncodingTypeMask, YYEncodingTypeLongDouble);
+    XCTAssertEqual([self getType:info name:@"longLongValue"] & White_YYEncodingTypeMask, White_YYEncodingTypeInt64);
+    XCTAssertEqual([self getType:info name:@"unsignedLongLongValue"] & White_YYEncodingTypeMask, White_YYEncodingTypeUInt64);
+    XCTAssertEqual([self getType:info name:@"floatValue"] & White_YYEncodingTypeMask, White_YYEncodingTypeFloat);
+    XCTAssertEqual([self getType:info name:@"doubleValue"] & White_YYEncodingTypeMask, White_YYEncodingTypeDouble);
+    XCTAssertEqual([self getType:info name:@"longDoubleValue"] & White_YYEncodingTypeMask, White_YYEncodingTypeLongDouble);
     
-    XCTAssertEqual([self getType:info name:@"objectValue"] & YYEncodingTypeMask, YYEncodingTypeObject);
-    XCTAssertEqual([self getType:info name:@"arrayValue"] & YYEncodingTypeMask, YYEncodingTypeObject);
-    XCTAssertEqual([self getType:info name:@"classValue"] & YYEncodingTypeMask, YYEncodingTypeClass);
-    XCTAssertEqual([self getType:info name:@"selectorValue"] & YYEncodingTypeMask, YYEncodingTypeSEL);
-    XCTAssertEqual([self getType:info name:@"blockValue"] & YYEncodingTypeMask, YYEncodingTypeBlock);
-    XCTAssertEqual([self getType:info name:@"pointerValue"] & YYEncodingTypeMask, YYEncodingTypePointer);
-    XCTAssertEqual([self getType:info name:@"functionPointerValue"] & YYEncodingTypeMask, YYEncodingTypePointer);
-    XCTAssertEqual([self getType:info name:@"structValue"] & YYEncodingTypeMask, YYEncodingTypeStruct);
-    XCTAssertEqual([self getType:info name:@"unionValue"] & YYEncodingTypeMask, YYEncodingTypeUnion);
-    XCTAssertEqual([self getType:info name:@"cStringValue"] & YYEncodingTypeMask, YYEncodingTypeCString);
+    XCTAssertEqual([self getType:info name:@"objectValue"] & White_YYEncodingTypeMask, White_YYEncodingTypeObject);
+    XCTAssertEqual([self getType:info name:@"arrayValue"] & White_YYEncodingTypeMask, White_YYEncodingTypeObject);
+    XCTAssertEqual([self getType:info name:@"classValue"] & White_YYEncodingTypeMask, White_YYEncodingTypeClass);
+    XCTAssertEqual([self getType:info name:@"selectorValue"] & White_YYEncodingTypeMask, White_YYEncodingTypeSEL);
+    XCTAssertEqual([self getType:info name:@"blockValue"] & White_YYEncodingTypeMask, White_YYEncodingTypeBlock);
+    XCTAssertEqual([self getType:info name:@"pointerValue"] & White_YYEncodingTypeMask, White_YYEncodingTypePointer);
+    XCTAssertEqual([self getType:info name:@"functionPointerValue"] & White_YYEncodingTypeMask, White_YYEncodingTypePointer);
+    XCTAssertEqual([self getType:info name:@"structValue"] & White_YYEncodingTypeMask, White_YYEncodingTypeStruct);
+    XCTAssertEqual([self getType:info name:@"unionValue"] & White_YYEncodingTypeMask, White_YYEncodingTypeUnion);
+    XCTAssertEqual([self getType:info name:@"cStringValue"] & White_YYEncodingTypeMask, White_YYEncodingTypeCString);
     
-    XCTAssertEqual(YYEncodingGetType(@encode(void)) & YYEncodingTypeMask, YYEncodingTypeVoid);
-    XCTAssertEqual(YYEncodingGetType(@encode(int[10])) & YYEncodingTypeMask, YYEncodingTypeCArray);
-    XCTAssertEqual(YYEncodingGetType("") & YYEncodingTypeMask, YYEncodingTypeUnknown);
-    XCTAssertEqual(YYEncodingGetType(".") & YYEncodingTypeMask, YYEncodingTypeUnknown);
-    XCTAssertEqual(YYEncodingGetType("ri") & YYEncodingTypeQualifierMask, YYEncodingTypeQualifierConst);
-    XCTAssertEqual([self getMethodTypeWithName:@"testIn:"] & YYEncodingTypeQualifierMask, YYEncodingTypeQualifierIn);
-    XCTAssertEqual([self getMethodTypeWithName:@"testOut:"] & YYEncodingTypeQualifierMask, YYEncodingTypeQualifierOut);
-    XCTAssertEqual([self getMethodTypeWithName:@"testInout:"] & YYEncodingTypeQualifierMask, YYEncodingTypeQualifierInout);
-    XCTAssertEqual([self getMethodTypeWithName:@"testBycopy:"] & YYEncodingTypeQualifierMask, YYEncodingTypeQualifierBycopy);
-    XCTAssertEqual([self getMethodTypeWithName:@"testByref:"] & YYEncodingTypeQualifierMask, YYEncodingTypeQualifierByref);
-    XCTAssertEqual([self getMethodTypeWithName:@"testOneway:"] & YYEncodingTypeQualifierMask, YYEncodingTypeQualifierOneway);
+    XCTAssertEqual(YYEncodingGetType(@encode(void)) & White_YYEncodingTypeMask, White_YYEncodingTypeVoid);
+    XCTAssertEqual(YYEncodingGetType(@encode(int[10])) & White_YYEncodingTypeMask, White_YYEncodingTypeCArray);
+    XCTAssertEqual(YYEncodingGetType("") & White_YYEncodingTypeMask, White_YYEncodingTypeUnknown);
+    XCTAssertEqual(YYEncodingGetType(".") & White_YYEncodingTypeMask, White_YYEncodingTypeUnknown);
+    XCTAssertEqual(YYEncodingGetType("ri") & White_YYEncodingTypeQualifierMask, White_YYEncodingTypeQualifierConst);
+    XCTAssertEqual([self getMethodTypeWithName:@"testIn:"] & White_YYEncodingTypeQualifierMask, White_YYEncodingTypeQualifierIn);
+    XCTAssertEqual([self getMethodTypeWithName:@"testOut:"] & White_YYEncodingTypeQualifierMask, White_YYEncodingTypeQualifierOut);
+    XCTAssertEqual([self getMethodTypeWithName:@"testInout:"] & White_YYEncodingTypeQualifierMask, White_YYEncodingTypeQualifierInout);
+    XCTAssertEqual([self getMethodTypeWithName:@"testBycopy:"] & White_YYEncodingTypeQualifierMask, White_YYEncodingTypeQualifierBycopy);
+    XCTAssertEqual([self getMethodTypeWithName:@"testByref:"] & White_YYEncodingTypeQualifierMask, White_YYEncodingTypeQualifierByref);
+    XCTAssertEqual([self getMethodTypeWithName:@"testOneway:"] & White_YYEncodingTypeQualifierMask, White_YYEncodingTypeQualifierOneway);
     
-    XCTAssert([self getType:info name:@"nonatomicValue"] & YYEncodingTypePropertyMask &YYEncodingTypePropertyNonatomic);
-    XCTAssert([self getType:info name:@"aCopyValue"] & YYEncodingTypePropertyMask & YYEncodingTypePropertyCopy);
-    XCTAssert([self getType:info name:@"strongValue"] & YYEncodingTypePropertyMask & YYEncodingTypePropertyRetain);
-    XCTAssert([self getType:info name:@"retainValue"] & YYEncodingTypePropertyMask & YYEncodingTypePropertyRetain);
-    XCTAssert([self getType:info name:@"weakValue"] & YYEncodingTypePropertyMask & YYEncodingTypePropertyWeak);
-    XCTAssert([self getType:info name:@"readonlyValue"] & YYEncodingTypePropertyMask & YYEncodingTypePropertyReadonly);
-    XCTAssert([self getType:info name:@"dynamicValue"] & YYEncodingTypePropertyMask & YYEncodingTypePropertyDynamic);
-    XCTAssert([self getType:info name:@"getterValue"] & YYEncodingTypePropertyMask &YYEncodingTypePropertyCustomGetter);
-    XCTAssert([self getType:info name:@"setterValue"] & YYEncodingTypePropertyMask & YYEncodingTypePropertyCustomSetter);
+    XCTAssert([self getType:info name:@"nonatomicValue"] & White_YYEncodingTypePropertyMask &White_YYEncodingTypePropertyNonatomic);
+    XCTAssert([self getType:info name:@"aCopyValue"] & White_YYEncodingTypePropertyMask & White_YYEncodingTypePropertyCopy);
+    XCTAssert([self getType:info name:@"strongValue"] & White_YYEncodingTypePropertyMask & White_YYEncodingTypePropertyRetain);
+    XCTAssert([self getType:info name:@"retainValue"] & White_YYEncodingTypePropertyMask & White_YYEncodingTypePropertyRetain);
+    XCTAssert([self getType:info name:@"weakValue"] & White_YYEncodingTypePropertyMask & White_YYEncodingTypePropertyWeak);
+    XCTAssert([self getType:info name:@"readonlyValue"] & White_YYEncodingTypePropertyMask & White_YYEncodingTypePropertyReadonly);
+    XCTAssert([self getType:info name:@"dynamicValue"] & White_YYEncodingTypePropertyMask & White_YYEncodingTypePropertyDynamic);
+    XCTAssert([self getType:info name:@"getterValue"] & White_YYEncodingTypePropertyMask &White_YYEncodingTypePropertyCustomGetter);
+    XCTAssert([self getType:info name:@"setterValue"] & White_YYEncodingTypePropertyMask & White_YYEncodingTypePropertyCustomSetter);
 }
 
-- (YYEncodingType)getType:(YYClassInfo *)info name:(NSString *)name {
-    return ((YYClassPropertyInfo *)info.propertyInfos[name]).type;
+- (White_YYEncodingType)getType:(White_YYClassInfo *)info name:(NSString *)name {
+    return ((White_YYClassPropertyInfo *)info.propertyInfos[name]).type;
 }
 
-- (YYEncodingType)getMethodTypeWithName:(NSString *)name {
+- (White_YYEncodingType)getMethodTypeWithName:(NSString *)name {
     YYTestPropertyModel *model = [YYTestPropertyModel new];
     NSMethodSignature *sig = [model methodSignatureForSelector:NSSelectorFromString(name)];
     const char *typeName = [sig getArgumentTypeAtIndex:2];

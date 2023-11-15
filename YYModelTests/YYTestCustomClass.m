@@ -10,7 +10,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "YYModel.h"
+#import "White_YYModel.h"
 
 @interface YYBaseUser : NSObject
 @property uint64_t uid;
@@ -81,30 +81,30 @@
     NSDictionary *jsonUserLocal = @{@"uid" : @123, @"name" : @"Harry", @"localName" : @"HarryLocal"};
     NSDictionary *jsonUserRemote = @{@"uid" : @123, @"name" : @"Harry", @"remoteName" : @"HarryRemote"};
     
-    user = [YYBaseUser yy_modelWithDictionary:jsonUserBase];
+    user = [YYBaseUser _white_yy_modelWithDictionary:jsonUserBase];
     XCTAssert([user isMemberOfClass:[YYBaseUser class]]);
     
-    user = [YYBaseUser yy_modelWithDictionary:jsonUserLocal];
+    user = [YYBaseUser _white_yy_modelWithDictionary:jsonUserLocal];
     XCTAssert([user isMemberOfClass:[YYLocalUser class]]);
     
-    user = [YYBaseUser yy_modelWithDictionary:jsonUserRemote];
+    user = [YYBaseUser _white_yy_modelWithDictionary:jsonUserRemote];
     XCTAssert([user isMemberOfClass:[YYRemoteUser class]]);
     
     
-    model = [YYTestCustomClassModel yy_modelWithJSON:@{@"user" : jsonUserLocal}];
+    model = [YYTestCustomClassModel _white_yy_modelWithJSON:@{@"user" : jsonUserLocal}];
     XCTAssert([model.user isMemberOfClass:[YYLocalUser class]]);
     
-    model = [YYTestCustomClassModel yy_modelWithJSON:@{@"users" : @[jsonUserBase, jsonUserLocal, jsonUserRemote]}];
+    model = [YYTestCustomClassModel _white_yy_modelWithJSON:@{@"users" : @[jsonUserBase, jsonUserLocal, jsonUserRemote]}];
     XCTAssert([model.users[0] isMemberOfClass:[YYBaseUser class]]);
     XCTAssert([model.users[1] isMemberOfClass:[YYLocalUser class]]);
     XCTAssert([model.users[2] isMemberOfClass:[YYRemoteUser class]]);
     
-    model = [YYTestCustomClassModel yy_modelWithJSON:@{@"userDict" : @{@"a" : jsonUserBase, @"b" : jsonUserLocal, @"c" : jsonUserRemote}}];
+    model = [YYTestCustomClassModel _white_yy_modelWithJSON:@{@"userDict" : @{@"a" : jsonUserBase, @"b" : jsonUserLocal, @"c" : jsonUserRemote}}];
     XCTAssert([model.userDict[@"a"] isKindOfClass:[YYBaseUser class]]);
     XCTAssert([model.userDict[@"b"] isKindOfClass:[YYLocalUser class]]);
     XCTAssert([model.userDict[@"c"] isKindOfClass:[YYRemoteUser class]]);
     
-    model = [YYTestCustomClassModel yy_modelWithJSON:@{@"userSet" : @[jsonUserBase, jsonUserLocal, jsonUserRemote]}];
+    model = [YYTestCustomClassModel _white_yy_modelWithJSON:@{@"userSet" : @[jsonUserBase, jsonUserLocal, jsonUserRemote]}];
     XCTAssert([model.userSet.anyObject isKindOfClass:[YYBaseUser class]]);
 }
 

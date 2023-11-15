@@ -10,7 +10,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "YYModel.h"
+#import "White_YYModel.h"
 
 
 @interface YYTestBlacklistModel : NSObject
@@ -64,12 +64,12 @@
 
 - (void)testBlacklist {
     NSString *json = @"{\"a\":\"A\", \"b\":\"B\", \"c\":\"C\", \"d\":\"D\"}";
-    YYTestBlacklistModel *model = [YYTestBlacklistModel yy_modelWithJSON:json];
+    YYTestBlacklistModel *model = [YYTestBlacklistModel _white_yy_modelWithJSON:json];
     XCTAssert(model.a == nil);
     XCTAssert(model.b != nil);
     XCTAssert(model.c != nil);
     
-    NSDictionary *dic = [model yy_modelToJSONObject];
+    NSDictionary *dic = [model _white_yy_modelToJSONObject];
     XCTAssert(dic[@"a"] == nil);
     XCTAssert(dic[@"b"] != nil);
     XCTAssert(dic[@"c"] != nil);
@@ -77,12 +77,12 @@
 
 - (void)testWhitelist {
     NSString *json = @"{\"a\":\"A\", \"b\":\"B\", \"c\":\"C\", \"d\":\"D\"}";
-    YYTestWhitelistModel *model = [YYTestWhitelistModel yy_modelWithJSON:json];
+    YYTestWhitelistModel *model = [YYTestWhitelistModel _white_yy_modelWithJSON:json];
     XCTAssert(model.a != nil);
     XCTAssert(model.b == nil);
     XCTAssert(model.c == nil);
     
-    NSDictionary *dic = [model yy_modelToJSONObject];
+    NSDictionary *dic = [model _white_yy_modelToJSONObject];
     XCTAssert(dic[@"a"] != nil);
     XCTAssert(dic[@"b"] == nil);
     XCTAssert(dic[@"c"] == nil);
@@ -91,12 +91,12 @@
 
 - (void)testBlackWhitelist {
     NSString *json = @"{\"a\":\"A\", \"b\":\"B\", \"c\":\"C\", \"d\":\"D\"}";
-    YYTestBlackWhitelistModel *model = [YYTestBlackWhitelistModel yy_modelWithJSON:json];
+    YYTestBlackWhitelistModel *model = [YYTestBlackWhitelistModel _white_yy_modelWithJSON:json];
     XCTAssert(model.a == nil);
     XCTAssert(model.b != nil);
     XCTAssert(model.c == nil);
     
-    NSDictionary *dic = [model yy_modelToJSONObject];
+    NSDictionary *dic = [model _white_yy_modelToJSONObject];
     XCTAssert(dic[@"a"] == nil);
     XCTAssert(dic[@"b"] != nil);
     XCTAssert(dic[@"c"] == nil);

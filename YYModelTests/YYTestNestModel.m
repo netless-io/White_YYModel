@@ -10,7 +10,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "YYModel.h"
+#import "White_YYModel.h"
 
 
 @interface YYTestNestUser : NSObject
@@ -38,17 +38,17 @@
 
 - (void)test {
     NSString *json = @"{\"repoID\":1234,\"name\":\"YYModel\",\"user\":{\"uid\":5678,\"name\":\"ibireme\"}}";
-    YYTestNestRepo *repo = [YYTestNestRepo yy_modelWithJSON:json];
+    YYTestNestRepo *repo = [YYTestNestRepo _white_yy_modelWithJSON:json];
     XCTAssert(repo.repoID == 1234);
     XCTAssert([repo.name isEqualToString:@"YYModel"]);
     XCTAssert(repo.user.uid == 5678);
     XCTAssert([repo.user.name isEqualToString:@"ibireme"]);
     
-    NSDictionary *jsonObject = [repo yy_modelToJSONObject];
+    NSDictionary *jsonObject = [repo _white_yy_modelToJSONObject];
     XCTAssert([((NSString *)jsonObject[@"name"]) isEqualToString:@"YYModel"]);
     XCTAssert([((NSString *)((NSDictionary *)jsonObject[@"user"])[@"name"]) isEqualToString:@"ibireme"]);
     
-    [repo yy_modelSetWithJSON:@{@"name" : @"YYImage", @"user" : @{@"name": @"bot"}}];
+    [repo _white_yy_modelSetWithJSON:@{@"name" : @"YYImage", @"user" : @{@"name": @"bot"}}];
     XCTAssert(repo.repoID == 1234);
     XCTAssert([repo.name isEqualToString:@"YYImage"]);
     XCTAssert(repo.user.uid == 5678);

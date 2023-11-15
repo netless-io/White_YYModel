@@ -10,7 +10,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "YYModel.h"
+#import "White_YYModel.h"
 
 
 typedef struct my_struct {
@@ -74,11 +74,11 @@ typedef struct my_struct {
 @end
 
 @implementation YYTestModelHashModel
-- (void)encodeWithCoder:(NSCoder *)aCoder { [self yy_modelEncodeWithCoder:aCoder]; }
-- (id)initWithCoder:(NSCoder *)aDecoder { self = [super init]; return [self yy_modelInitWithCoder:aDecoder]; }
-- (id)copyWithZone:(NSZone *)zone { return [self yy_modelCopy]; }
-- (NSUInteger)hash { return [self yy_modelHash]; }
-- (BOOL)isEqual:(id)object { return [self yy_modelIsEqual:object]; }
+- (void)encodeWithCoder:(NSCoder *)aCoder { [self _white_yy_modelEncodeWithCoder:aCoder]; }
+- (id)initWithCoder:(NSCoder *)aDecoder { self = [super init]; return [self _white_yy_modelInitWithCoder:aDecoder]; }
+- (id)copyWithZone:(NSZone *)zone { return [self _white_yy_modelCopy]; }
+- (NSUInteger)hash { return [self _white_yy_modelHash]; }
+- (BOOL)isEqual:(id)object { return [self _white_yy_modelIsEqual:object]; }
 @end
 
 
@@ -171,13 +171,13 @@ typedef struct my_struct {
     NSArray *array = @[model1, model2];
     NSMutableData *mutableData = [NSMutableData new];
     NSKeyedArchiver *coder = [[NSKeyedArchiver alloc] initForWritingWithMutableData:mutableData];
-    [array yy_modelEncodeWithCoder:coder];
+    [array _white_yy_modelEncodeWithCoder:coder];
     [coder finishEncoding];
     XCTAssertTrue(mutableData.length > 0);
     
     mutableData = [NSMutableData new];
     coder = [[NSKeyedArchiver alloc] initForWritingWithMutableData:mutableData];
-    [[NSNull null] yy_modelEncodeWithCoder:coder];
+    [[NSNull null] _white_yy_modelEncodeWithCoder:coder];
     [coder finishEncoding];
     XCTAssertTrue(mutableData.length > 0);
 }

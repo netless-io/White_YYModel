@@ -10,7 +10,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "YYModel.h"
+#import "White_YYModel.h"
 #import "YYTestHelper.h"
 
 @interface YYTestAutoTypeModel : NSObject
@@ -117,7 +117,7 @@
     YYTestAutoTypeModel *model;
     
     json = @"{\"v\" : 1}";
-    model = [YYTestAutoTypeModel yy_modelWithJSON:json];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:json];
     XCTAssert(model.boolValue);
     XCTAssert(model.BOOLValue);
     XCTAssert(model.charValue == 1);
@@ -147,7 +147,7 @@
     
     
     json = @"{\"v\" : 1.5}";
-    model = [YYTestAutoTypeModel yy_modelWithJSON:json];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:json];
     XCTAssert(model.boolValue);
     XCTAssert(model.BOOLValue);
     XCTAssert(model.charValue == 1);
@@ -172,7 +172,7 @@
     XCTAssert([model.mString isKindOfClass:[NSMutableString class]]);
     
     json = @"{\"v\" : -1}";
-    model = [YYTestAutoTypeModel yy_modelWithJSON:json];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:json];
     XCTAssert(model.boolValue);
     XCTAssert(model.BOOLValue);
     XCTAssert(model.charValue == -1);
@@ -197,7 +197,7 @@
     XCTAssert([model.mString isKindOfClass:[NSMutableString class]]);
     
     json = @"{\"v\" : \"2\"}";
-    model = [YYTestAutoTypeModel yy_modelWithJSON:json];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:json];
     XCTAssert(model.boolValue);
     XCTAssert(model.BOOLValue);
     XCTAssert(model.charValue == 2);
@@ -222,11 +222,11 @@
     XCTAssert([model.mString isKindOfClass:[NSMutableString class]]);
     
     model.intValue = 12;
-    [model yy_modelSetWithJSON:json];
+    [model _white_yy_modelSetWithJSON:json];
     XCTAssert(model.intValue == 2);
     
     json = @"{\"v\" : \"-3.2\"}";
-    model = [YYTestAutoTypeModel yy_modelWithJSON:json];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:json];
     XCTAssert(fabs(model.floatValue + 3.2) < 0.0001);
     XCTAssert(fabs(model.doubleValue + 3.2) < 0.0001);
     XCTAssert(fabsl(model.longDoubleValue + 3.2) < 0.0001);
@@ -239,51 +239,51 @@
     
     
     json = @"{\"v\" : \"true\"}";
-    model = [YYTestAutoTypeModel yy_modelWithJSON:json];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:json];
     XCTAssert(model.boolValue);
     XCTAssert(model.intValue == 1);
     
     json = @"{\"v\" : \"false\"}";
-    model = [YYTestAutoTypeModel yy_modelWithJSON:json];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:json];
     XCTAssert(model.boolValue == 0);
     XCTAssert(model.intValue == 0);
     
     json = @"{\"v\" : \"YES\"}";
-    model = [YYTestAutoTypeModel yy_modelWithJSON:json];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:json];
     XCTAssert(model.boolValue);
     XCTAssert(model.intValue == 1);
     
     json = @"{\"v\" : \"NO\"}";
-    model = [YYTestAutoTypeModel yy_modelWithJSON:json];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:json];
     XCTAssert(model.boolValue == 0);
     XCTAssert(model.intValue == 0);
     
     json = @"{\"v\" : \"nil\"}";
-    model = [YYTestAutoTypeModel yy_modelWithJSON:json];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:json];
     XCTAssert(model.boolValue == 0);
     XCTAssert(model.intValue == 0);
     XCTAssert([model.string isEqual:@"nil"]);
     XCTAssert(model.number == nil);
     
     json = @"{\"v\" : {}}";
-    model = [YYTestAutoTypeModel yy_modelWithJSON:json];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:json];
     XCTAssert(model.boolValue == 0);
     XCTAssert(model.intValue == 0);
     XCTAssert(model.string == nil);
     XCTAssert(model.number == nil);
     
-    model = [YYTestAutoTypeModel yy_modelWithJSON:@{@"v" : [NSDecimalNumber decimalNumberWithString:@"9876543210"]}];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:@{@"v" : [NSDecimalNumber decimalNumberWithString:@"9876543210"]}];
     XCTAssert(model.unsignedLongLongValue == 9876543210LLU);
     XCTAssert(model.longLongValue == 9876543210LL);
     
-    model = [YYTestAutoTypeModel yy_modelWithJSON:@{@"v" : [NSValue valueWithPointer:CFArrayCreate]}];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:@{@"v" : [NSValue valueWithPointer:CFArrayCreate]}];
     XCTAssert(model.pointerValue == CFArrayCreate);
     
-    model = [YYTestAutoTypeModel yy_modelWithJSON:@{@"v" : [NSURL class]}];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:@{@"v" : [NSURL class]}];
     XCTAssert(model.classValue == [NSURL class]);
     
     __block int  i = 0;
-    model = [YYTestAutoTypeModel yy_modelWithJSON:@{@"v" : ^{i = 1;}}];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:@{@"v" : ^{i = 1;}}];
     model.blockValue();
     XCTAssert(i == 1);
 }
@@ -294,58 +294,58 @@
     YYTestAutoTypeModel *model;
     
     json = @"{\"v\" : \"2014-05-06\"}";
-    model = [YYTestAutoTypeModel yy_modelWithJSON:json];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:json];
     XCTAssert([model.date isKindOfClass:[NSDate class]]);
     
     json = @"{\"v\" : \"2014-05-06 07:08:09\"}";
-    model = [YYTestAutoTypeModel yy_modelWithJSON:json];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:json];
     XCTAssert([model.date isKindOfClass:[NSDate class]]);
     
     json = @"{\"v\" : \"2014-05-06T07:08:09\"}";
-    model = [YYTestAutoTypeModel yy_modelWithJSON:json];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:json];
     XCTAssert([model.date isKindOfClass:[NSDate class]]);
     
     json = @"{\"v\" : \"2014-01-20T12:24:48Z\"}";
-    model = [YYTestAutoTypeModel yy_modelWithJSON:json];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:json];
     XCTAssert([model.date isKindOfClass:[NSDate class]]);
     
     json = @"{\"v\" : \"2014-01-20T12:24:48+0800\"}";
-    model = [YYTestAutoTypeModel yy_modelWithJSON:json];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:json];
     XCTAssert([model.date isKindOfClass:[NSDate class]]);
     
     json = @"{\"v\" : \"2014-01-20T12:24:48+12:00\"}";
-    model = [YYTestAutoTypeModel yy_modelWithJSON:json];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:json];
     XCTAssert([model.date isKindOfClass:[NSDate class]]);
     
     json = @"{\"v\" : \"Fri Sep 04 00:12:21 +0800 2015\"}";
-    model = [YYTestAutoTypeModel yy_modelWithJSON:json];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:json];
     XCTAssert([model.date isKindOfClass:[NSDate class]]);
 
     json = @"{\"v\" : \"2014-05-06 07:08:09.000\"}";
-    model = [YYTestAutoTypeModel yy_modelWithJSON:json];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:json];
     XCTAssert([model.date isKindOfClass:[NSDate class]]);
 
     json = @"{\"v\" : \"2014-05-06T07:08:09.000\"}";
-    model = [YYTestAutoTypeModel yy_modelWithJSON:json];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:json];
     XCTAssert([model.date isKindOfClass:[NSDate class]]);
 
     json = @"{\"v\" : \"2014-01-20T12:24:48.000Z\"}";
-    model = [YYTestAutoTypeModel yy_modelWithJSON:json];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:json];
     XCTAssert([model.date isKindOfClass:[NSDate class]]);
 
     json = @"{\"v\" : \"2014-01-20T12:24:48.000Z\"}";
-    model = [YYTestAutoTypeModel yy_modelWithJSON:json];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:json];
     XCTAssert([model.date isKindOfClass:[NSDate class]]);
 
     json = @"{\"v\" : \"2014-01-20T12:24:48.000+12:00\"}";
-    model = [YYTestAutoTypeModel yy_modelWithJSON:json];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:json];
     XCTAssert([model.date isKindOfClass:[NSDate class]]);
 
     json = @"{\"v\" : \"Fri Sep 04 00:12:21.000 +0800 2015\"}";
-    model = [YYTestAutoTypeModel yy_modelWithJSON:json];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:json];
     XCTAssert([model.date isKindOfClass:[NSDate class]]);
     
-    model = [YYTestAutoTypeModel yy_modelWithJSON:@{@"v" : [NSDate new]}];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:@{@"v" : [NSDate new]}];
     XCTAssert([model.date isKindOfClass:[NSDate class]]);
 }
 
@@ -354,31 +354,31 @@
     YYTestAutoTypeModel *model;
     
     json = @{@"v" : @"Apple"};
-    model = [YYTestAutoTypeModel yy_modelWithJSON:json];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:json];
     XCTAssertTrue([model.string isEqualToString:@"Apple"]);
     
     json = @{@"v" : @" github.com"};
-    model = [YYTestAutoTypeModel yy_modelWithJSON:json];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:json];
     XCTAssertTrue([model.url isEqual:[NSURL URLWithString:@"github.com"]]);
     
     json = @{@"v" : @"stringWithFormat:"};
-    model = [YYTestAutoTypeModel yy_modelWithJSON:json];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:json];
     XCTAssertTrue(model.selectorValue == @selector(stringWithFormat:));
     
     json = @{@"v" : @"UILabel"};
-    model = [YYTestAutoTypeModel yy_modelWithJSON:json];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:json];
     XCTAssertTrue(model.classValue == UILabel.class);
     
-    model = [YYTestAutoTypeModel yy_modelWithJSON:@{@"v" : [@"haha" dataUsingEncoding:NSUTF8StringEncoding]}];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:@{@"v" : [@"haha" dataUsingEncoding:NSUTF8StringEncoding]}];
     XCTAssert([model.string isEqualToString:@"haha"]);
     
-    model = [YYTestAutoTypeModel yy_modelWithJSON:@{@"v" : [NSURL URLWithString:@"https://github.com"]}];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:@{@"v" : [NSURL URLWithString:@"https://github.com"]}];
     XCTAssert([model.string isEqualToString:@"https://github.com"]);
     
-    model = [YYTestAutoTypeModel yy_modelWithJSON:@{@"v" : @" "}];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:@{@"v" : @" "}];
     XCTAssert(model.url == nil);
     
-    model = [YYTestAutoTypeModel yy_modelWithJSON:@{@"v" : [[NSAttributedString alloc] initWithString:@"test"]}];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:@{@"v" : [[NSAttributedString alloc] initWithString:@"test"]}];
     XCTAssert([model.string isEqualToString:@"test"]);
 }
 
@@ -387,12 +387,12 @@
     YYTestAutoTypeModel *model;
     
     value = [NSValue valueWithCGRect:CGRectMake(1, 2, 3, 4)];
-    model = [YYTestAutoTypeModel yy_modelWithJSON:@{@"v" : value}];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:@{@"v" : value}];
     XCTAssertTrue(CGRectEqualToRect(model.structValue, CGRectMake(1, 2, 3, 4)));
     XCTAssertTrue(CGPointEqualToPoint(model.pointValue, CGPointZero));
     
     value = [NSValue valueWithCGPoint:CGPointMake(1, 2)];
-    model = [YYTestAutoTypeModel yy_modelWithJSON:@{@"v" : value}];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:@{@"v" : value}];
     XCTAssertTrue(CGRectEqualToRect(model.structValue, CGRectZero));
     XCTAssertTrue(CGPointEqualToPoint(model.pointValue, CGPointMake(1, 2)));
 }
@@ -400,7 +400,7 @@
 - (void)testNull {
     YYTestAutoTypeModel *model;
     
-    model = [YYTestAutoTypeModel yy_modelWithJSON:@{@"v" : [NSNull null]}];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:@{@"v" : [NSNull null]}];
     XCTAssertTrue(model.boolValue == false);
     XCTAssertTrue(model.object == nil);
 }
@@ -408,7 +408,7 @@
 - (void)testBlock {
     int (^block)(void) = ^{return 12;};
     NSDictionary *dic = @{@"v":block};
-    YYTestAutoTypeModel *model = [YYTestAutoTypeModel yy_modelWithDictionary:dic];
+    YYTestAutoTypeModel *model = [YYTestAutoTypeModel _white_yy_modelWithDictionary:dic];
     XCTAssertNotNil(model.blockValue);
     
     block = (id)model.blockValue;
@@ -419,36 +419,36 @@
     NSString *json;
     
     json = @"[{\"v\":1},{\"v\":2},{\"v\":3}]";
-    NSArray *array = [NSArray yy_modelArrayWithClass:YYTestAutoTypeModel.class json:json];
+    NSArray *array = [NSArray _white_yy_modelArrayWithClass:YYTestAutoTypeModel.class json:json];
     XCTAssertTrue(array.count == 3);
     XCTAssertTrue([array.firstObject isKindOfClass:[YYTestAutoTypeModel class]]);
     
-    array = [NSArray yy_modelArrayWithClass:YYTestAutoTypeModel.class json:[YYTestHelper jsonDataFromString:json]];
+    array = [NSArray _white_yy_modelArrayWithClass:YYTestAutoTypeModel.class json:[YYTestHelper jsonDataFromString:json]];
     XCTAssertTrue(array.count == 3);
     XCTAssertTrue([array.firstObject isKindOfClass:[YYTestAutoTypeModel class]]);
     
-    array = [NSArray yy_modelArrayWithClass:YYTestAutoTypeModel.class json:[YYTestHelper jsonObjectFromString:json]];
+    array = [NSArray _white_yy_modelArrayWithClass:YYTestAutoTypeModel.class json:[YYTestHelper jsonObjectFromString:json]];
     XCTAssertTrue(array.count == 3);
     XCTAssertTrue([array.firstObject isKindOfClass:[YYTestAutoTypeModel class]]);
     
     
     json = @"{\"a\":{\"v\":1},\"b\":{\"v\":2},\"c\":{\"v\":3}}";
-    NSDictionary *dict = [NSDictionary yy_modelDictionaryWithClass:YYTestAutoTypeModel.class json:json];
+    NSDictionary *dict = [NSDictionary _white_yy_modelDictionaryWithClass:YYTestAutoTypeModel.class json:json];
     XCTAssertTrue(dict.count == 3);
     XCTAssertTrue([dict[@"a"] isKindOfClass:[YYTestAutoTypeModel class]]);
     
     json = @"{\"a\":{\"v\":1},\"b\":{\"v\":2},\"c\":{\"v\":3}}";
-    dict = [NSDictionary yy_modelDictionaryWithClass:YYTestAutoTypeModel.class json:[YYTestHelper jsonDataFromString:json]];
+    dict = [NSDictionary _white_yy_modelDictionaryWithClass:YYTestAutoTypeModel.class json:[YYTestHelper jsonDataFromString:json]];
     XCTAssertTrue(dict.count == 3);
     XCTAssertTrue([dict[@"a"] isKindOfClass:[YYTestAutoTypeModel class]]);
     
     json = @"{\"a\":{\"v\":1},\"b\":{\"v\":2},\"c\":{\"v\":3}}";
-    dict = [NSDictionary yy_modelDictionaryWithClass:YYTestAutoTypeModel.class json:[YYTestHelper jsonObjectFromString:json]];
+    dict = [NSDictionary _white_yy_modelDictionaryWithClass:YYTestAutoTypeModel.class json:[YYTestHelper jsonObjectFromString:json]];
     XCTAssertTrue(dict.count == 3);
     XCTAssertTrue([dict[@"a"] isKindOfClass:[YYTestAutoTypeModel class]]);
     
     YYTestAutoTypeModel *model;
-    model = [YYTestAutoTypeModel yy_modelWithJSON:@{@"v" : [NSSet setWithArray:@[@1,@2,@3]]}];
+    model = [YYTestAutoTypeModel _white_yy_modelWithJSON:@{@"v" : [NSSet setWithArray:@[@1,@2,@3]]}];
     XCTAssertTrue([model.array isKindOfClass:[NSArray class]]);
     XCTAssertTrue(model.array.count == 3);
 }

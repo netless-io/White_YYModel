@@ -10,7 +10,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "YYModel.h"
+#import "White_YYModel.h"
 
 
 typedef struct my_struct {
@@ -83,7 +83,7 @@ typedef struct my_union {
 
 @implementation YYTestDescriptionModel
 - (NSString *)description {
-    return [self yy_modelDescription];
+    return [self _white_yy_modelDescription];
 }
 @end
 
