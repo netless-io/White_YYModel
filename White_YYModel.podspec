@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = 'White_YYModel'
   s.summary      = 'Fork from ibireme/YYModel.'
-  s.version      = '1.0.5'
+  s.version      = '1.0.6'
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.authors      = { 'ibireme' => 'ibireme@gmail.com' }
   s.social_media_url = 'http://blog.ibireme.com'
